@@ -5,9 +5,35 @@ section .text
   global sum
   global buble_sort
   global max
-  global sub
+  global _sub
+  global sum_matrix
+
+sum_matrix:
+  push rbp
+  mov rbp, rsp
   
-sub:
+  xor eax, eax
+  mov r9, -1
+  
+  .for1:
+    inc r9
+    cmp r9d, esi
+    jge .end
+    xor r8, r8
+    mov ebx, [rdi + r9 * 8]
+    .for2:
+      cmp r8d, edx
+      jge .for1
+        mov ecx, [rbx + r8 * 4]
+        add eax, ecx
+        inc r8
+        jmp .for2
+  
+  .end:
+  pop rbp
+  ret
+  
+_sub:
   push rbp
   mov rbp, rsp
   mov eax, edi

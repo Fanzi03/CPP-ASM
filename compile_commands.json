@@ -1,0 +1,3 @@
+[tools]
+nasm = { command = "nasm", flags = "-f elf64" }
+gcc = { command = "gcc", flags = "-o sort.o" }

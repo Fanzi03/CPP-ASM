@@ -4,6 +4,30 @@ section .text
   global get_average
   global sum
   global buble_sort
+  global max
+  global sub
+  
+sub:
+  push rbp
+  mov rbp, rsp
+  mov eax, edi
+  sub eax, esi
+  pop rbp
+  ret
+
+max:
+  push rbp 
+  mov rbp, rsp
+
+  mov eax, edi
+  
+  cmp edi, esi
+  jge .more
+    mov eax, esi
+  .more:
+
+  pop rbp
+  ret
 
 buble_sort:
   push rbp

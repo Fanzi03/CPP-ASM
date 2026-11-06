@@ -10,6 +10,7 @@
 extern "C" {
 double get_average(int *arr, size_t size);
 int sum(int a, int b);
+int sub(int a, int b);
 }
 
 int main() {
@@ -19,7 +20,7 @@ int main() {
   cin >> a;
   cin >> b;
 
-  cout << sum(a, b) << endl;
+  cout << sub(a, b) << endl;
 
   return 0;
 }

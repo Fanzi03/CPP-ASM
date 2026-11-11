@@ -1,6 +1,5 @@
 #include <iostream>
-#include "../lib/dynamic_matrix.h"
-//#include "../lib/input_output.h"
+//#include "../lib/dynamic_matrix.h"
 
 extern "C" {
 /*
@@ -14,22 +13,18 @@ double get_average(int *arr, size_t size);
 int sum(int a, int b);
 int _sub(int a, int b);
 int sum_matrix(int **matrix, size_t n, size_t m);
+void* make_arr(size_t n, size_t size);
+int* make_int_arr_with_init_value(size_t n, int value);
+int* get_pointer_variable_to();
+
+
 }
 
 int main() {
   using namespace std;
-
-  cout<< "Enter two elements that are n and m"<<endl;
-  size_t a, b;
-  cin >> a;
-  cin >> b;
-  
-  
-  int **matrix = (int**)init(a,b, sizeof(int));
-
-  input_int_matrix(matrix,a,b);
-
-  cout << sum_matrix(matrix, a, b) << endl;
+  cout <<"hello"<<endl;
+  cout<<(*get_pointer_variable_to())<<endl;
 
   return 0;
 }
+

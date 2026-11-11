@@ -19,13 +19,19 @@ lib: prepare_dirs
 
 program: prepare_dirs lib
 	@echo "Compile project..."
-	g++ -c -g -ggdb -o build/main.o src/main.cpp
 	nasm -f elf64 -g -F dwarf src/algorithm.asm -o build/algorithm.o
-	g++ build/main.o build/algorithm.o -Lbuild/ -lmatrix -o bin/program  -g -m64 -no-pie -z noexecstack -Wall
+	nasm -f elf64 -g -F dwarf src/try.asm -o build/try.o
+	cmake -S . -B build -G Ninja
+	cmake --build build
+	mv build/asm bin/asm
+#g++ -c -g -ggdb -nostdlib -o build/sim.o lib/sim.cpp
+#	ld -m elf_x86_64 -T src/linker.ld -o build/program.bin build/sim.o build/algorithm.o
+#g++ build/main.o build/algorithm.o build/try.o -Lbuild/ -lmatrix -o bin/program  -g -m64 -no-pie -z noexecstack -Wall
+
 	@echo "Finish compile."
 
 clean:
 	@echo "Cleaning project..."
-	rm -f build/*.o build/*.so build/*.a
+	rm -rf build/ 
 	rm -f bin/program
 	@echo "Done."

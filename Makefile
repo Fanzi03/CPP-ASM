@@ -5,19 +5,19 @@ all: program
 prepare_dirs:
 	@mkdir -p build bin
 
-lib: prepare_dirs
-#	@set -euo pipefail
-	@if [ ! -f "build/libmatrix.a" ]; then \
-		echo "Compile lib..."; \
-		g++ -c -g -ggdb -o build/dynamic_matrix.o lib/dynamic_matrix.cpp;\
-		g++ -c -g -ggdb -o build/input_output.o lib/input_output.cpp;\
-		ar rcs build/libmatrix.a build/input_output.o build/dynamic_matrix.o;\
-		echo "Finish compile lib.";\
-	else\
-		echo "Lib already compiled";\
-	fi
+#lib: prepare_dirs
+##	@set -euo pipefail
+#	@if [ ! -f "build/libmatrix.a" ]; then \
+#		echo "Compile lib..."; \
+#		g++ -c -g -ggdb -o build/dynamic_matrix.o lib/dynamic_matrix.cpp;\
+#		g++ -c -g -ggdb -o build/input_output.o lib/input_output.cpp;\
+#		ar rcs build/libmatrix.a build/input_output.o build/dynamic_matrix.o;\
+#		echo "Finish compile lib.";\
+#	else\
+#		echo "Lib already compiled";\
+#	fi
 
-program: prepare_dirs lib
+program: prepare_dirs #lib
 	@echo "Compile project..."
 	nasm -f elf64 -g -F dwarf src/algorithm.asm -o build/algorithm.o
 	nasm -f elf64 -g -F dwarf src/try.asm -o build/try.o

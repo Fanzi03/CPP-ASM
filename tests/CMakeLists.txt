@@ -1,5 +1,6 @@
 add_executable(test_array
     test_main.cc
+    test_dynamic_matrix.cpp
 )
 
 target_link_libraries(

@@ -19,11 +19,14 @@ target_include_directories(array PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 
+enable_language(ASM_NASM)
+
 add_executable(asm
   src/main.cpp
   src/core/chill.cpp
-  build/try.o
-  build/algorithm.o
+  src/try.asm
+  src/algorithm.asm
+  src/core/chill.cpp
 )
 
 target_include_directories(asm PRIVATE
@@ -41,6 +44,7 @@ if(ENABLE_TESTS)
       GIT_REPOSITORY https://github.com/google/googletest.git
       GIT_TAG        v1.16.0
   )
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(googletest)
 
   enable_testing()

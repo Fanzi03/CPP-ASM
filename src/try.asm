@@ -11,13 +11,16 @@ section .text
     global get_pointer_variable_to
 
 extern malloc 
+extern multiplie_matrixies
 
 get_pointer_variable_to:
     push rbp
     mov rbp, rsp
 
+    call multiplie_matrixies
     mov rax, a
 
+    mov rsp,rbp
     pop rbp
     ret
 
@@ -44,6 +47,7 @@ make_int_arr_with_init_value:
             jmp .loop
     .end:
 
+    mov rsp, rbp
     pop rbp
     ret
     

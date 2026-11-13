@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void **init(size_t n, size_t m, size_t size) {
+extern "C" void **init(size_t n, size_t m, size_t size) {
   void **A =(void**) malloc(n * sizeof(&size));
   for (size_t i = 0; i < n; i++)
     A[i] = calloc(m, size);

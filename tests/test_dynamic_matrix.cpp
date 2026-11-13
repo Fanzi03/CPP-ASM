@@ -1,11 +1,8 @@
 #include "assert.h"
 #include "iostream"
 #include <dynamic_matrix.h>
+#include <gtest/gtest.h>
 
-/*
-int main(void)
-{
-    assert(sizeof(init(1,1,1)) == 8);
-    return 0;
+TEST(TestArray, BasicAssertion){
+    EXPECT_EQ(sizeof(init(1,1,sizeof(int))), sizeof(int*));
 }
-*/

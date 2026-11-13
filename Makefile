@@ -17,11 +17,11 @@ prepare_dirs:
 #		echo "Lib already compiled";\
 #	fi
 
-building: prepare_dirs #lib
+building: prepare_dirs #lib clean
 	@echo "Compile project..."
-	nasm -f elf64 -g -F dwarf src/algorithm.asm -o build/algorithm.o
-	nasm -f elf64 -g -F dwarf src/try.asm -o build/try.o
-	cmake -S . -B build -G Ninja --graphviz=build/scheme.dot
+#	nasm -f elf64 -g -F dwarf src/algorithm.asm -o build/algorithm.o
+#	nasm -f elf64 -g -F dwarf src/try.asm -o build/try.o
+	cmake -S . -B build -G Ninja --graphviz=build/scheme.dot -DENABLE_TESTS=ON
 	dot -Tpng -o build/scheme.png build/scheme.dot
 	cmake --build build
 	mv build/asm bin/asm
@@ -32,7 +32,7 @@ building: prepare_dirs #lib
 	@echo "Finish compile."
 
 test: 
-	ctest --test-dir build
+	ctest --test-dir build --output-on-failure
 	
 program: building test
 

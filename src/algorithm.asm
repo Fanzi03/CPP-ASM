@@ -27,6 +27,7 @@ section .text
 extern malloc
 extern calloc
 extern printf
+extern init
 
 
 multiplie_matrixies:
@@ -43,46 +44,51 @@ multiplie_matrixies:
     syscall
 
     xor eax, eax
+    mov rsp, rbp
     pop rbp
     ret
   .equal:
-
-  mov [matrix1], rdi
-  mov [n1], esi
-  mov [m1], edx
-
-  mov [matrix2], rcx
-  mov [n2], r8d
-  mov [m2], r9d
-  mov rcx, [rsp + 16] 
-  mov [size], ecx 
-
-  mov rdi, [n1]
-  imul rdi, 8
-
-  call malloc
-
-  mov [res], rax
-  mov [i], 0
   
-  .loop:
-    mov ecx, [i]
-    cmp ecx, [n1]
-    jge .end
-      mov rdi, [m2]
-      imul rdi, [size]
-      call malloc
-      mov ecx, [i]
-      mov [res + rcx * 8], rax
-;      mov rdi, fmt
-;      mov rsi, [n1]
-;      xor eax, eax
-;      call printf
-      add [i], 1
-      jmp .loop
-  .end:
-  mov rax, res
+;  push rdi
+  call init
+
+;  mov [matrix1], rdi
+;  mov [n1], esi
+;  mov [m1], edx
+;
+;  mov [matrix2], rcx
+;  mov [n2], r8d
+;  mov [m2], r9d
+;  mov rcx, [rsp + 16] 
+;  mov [size], ecx 
+;
+;  mov rdi, [n1]
+;  imul rdi, 8
+;
+;  call malloc
+;
+;  mov [res], rax
+;  mov [i], 0
+;  
+;  .loop:
+;    mov ecx, [i]
+;    cmp ecx, [n1]
+;    jge .end
+;      mov rdi, [m2]
+;      imul rdi, [size]
+;      call malloc
+;      mov ecx, [i]
+;      mov [res + rcx * 8], rax
+;;      mov rdi, fmt
+;;      mov rsi, [n1]
+;;      xor eax, eax
+;;      call printf
+;      add [i], 1
+;      jmp .loop
+;  .end:
+;  mov rax, res
     
+  mov rsp, rbp
   pop rbp
   ret
 

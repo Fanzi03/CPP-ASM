@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <dynamic_matrix.h>
 
 // Demonstrate some basic assertions.
 TEST(HelloTest, BasicAssertions) {
